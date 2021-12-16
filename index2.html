@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  
+    
+    <meta charset="utf-8">
+      <title>Entertainment Lounge</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+      <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height:100%;
+            width:100%;
+            position: relative;
+            top: 0;
+            bottom: 0;
+        }
+        .map:hover {
+            opacity: 1.0;
+        }
+        .map {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            opacity: 0.5;
+            width: 120px;
+            height: 120px;
+            z-index: 5;
+        }
+
+        video{
+          position: absolute;
+        }
+        .videohide {
+            z-index: 0;
+        }
+
+        .videocontrol {
+          background-image: url('Media_Panel.png');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          position: absolute; 
+          z-index: 5; 
+          text-align: center;
+          top: 20px;
+          right: 20px;
+          height: 28px;
+          width: 120px;
+          font-size: 4px;
+          letter-spacing: 18px;
+        }
+        .playpause{
+          height: 18px;
+          width: 18px;
+        }
+        .muteunmute{
+          height: 18px;
+          width: 18px;
+        }
+        .fullscreen{
+          height: 18px;
+          width: 18px;
+        }
+        </style>
+
+</head>
+
+
+<body>
+
+  <div class="menu-container">
+    <div class="button">
+       360 ENVIRONMENT SAMPLE
+       <span class="fas fa-bars"></span>
+    </div>
+    <ul>
+      <li><a href="https://x1-digital.com/">X1-DIGITAL</a></li>
+      <li><a href="index.html">MAIN LOBBY</a></li>
+      <li><a href="index2.html">ENTERTAINMENT LOUNGE</a></li>
+      <li><a href="index3.html">EXHIBIT AREA</a></li>
+      <li><a href="index8.html">SOCIALS</a></li>
+      <li><a href="index9.html">MAIN HALL</a></li>
+      <li><a href="index10.html">INFORMATION</a></li>
+      <li><a href="index11.html">ART GALLERY</a></li>
+       <li><a onclick="openFullscreen();">FULL PAGE VIEW</a></li>
+    </ul>
+  </div>
+  
+  <script>
+    $(document).ready(function(){
+      $('.button').click(function(){
+        if($(this).hasClass('expand')){
+          $('ul').slideUp(function(){
+            $('.button').removeClass('expand');
+            $('.fas').removeClass('expand')
+          });
+        }else{
+          $(this).addClass('expand');
+          setTimeout(function(){
+            $('.fas').addClass('expand');
+            $('ul').stop().slideDown();
+          },200);
+        }
+      });
+    });
+ </script>
+  
+        <video class="videohide" id="video" width="0" height="0" controls loop autoplay >
+          <source src="videoplayback (3).mp4" type='video/mp4'>
+          </video>
+
+
+          <nav class="videocontrol" > 
+            <br>
+            <input  class="fullscreen" type="image"  onclick="videofull()" src="Fullscreen.png" />
+            <input id="playpause" class="playpause" type="image" onclick="playPause(),toggleplaypause()" src="Stop.png" />
+            <input id="muteunmute" class="muteunmute" type="image" onclick="enableMute(),togglemuteunmute()" src="Mute.png" />
+          </nav> 
+
+      
+      <script> 
+      function toggleplaypause() {
+            var Image_Id = document.getElementById('playpause');
+            if (Image_Id.src.match("Play.png")) {
+                Image_Id.src = "Stop.png";
+            }
+            else {
+                Image_Id.src = "Play.png";
+            }
+        }        
+      function togglemuteunmute() {
+            var Image_Id = document.getElementById('muteunmute');
+            if (Image_Id.src.match("Unmute.png")) {
+                Image_Id.src = "Mute.png";
+            }
+            else {
+                Image_Id.src = "Unmute.png";
+            }
+        }      
+     
+      var myVideo = document.getElementById("video");
+      function playPause() { 
+        if (myVideo.paused)
+          myVideo.play();
+        else 
+          myVideo.pause();
+          myVideo.currentTime = 0;
+      } 
+      function enableMute() { 
+        if (myVideo.muted === false)  
+          myVideo.muted = true;
+        else 
+          myVideo.muted = false;
+      }
+      </script> 
+    
+  <img src="Map_Mainhall.jpg" class="map">
+
+    <script src="three.min.js"></script>
+    <script src="OrbitControls.js"></script>
+    <script src="app2.js"></script>
+    <script src="three.js"></script>
+    <script src="fullscreen.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8">
+      <title>Booth 1</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+body { 
+	position: relative;
+    background-image: url("Booth_2d.jpg");
+    background-repeat:no-repeat;
+    background-size:100vw 100vh;
+}
+
+video {       
+    height: 20vh;
+    width: 20vw;
+    object-fit: fill; 
+    position: relative;
+        
+}
+
+.banner {       
+    height: 10vh;
+    width: 20vw;
+    object-fit: fill; 
+    position: relative;
+        
+}
+
+.back {
+    position: absolute;
+    left: 30px;
+    top: 90vh;
+    width: 40px;
+    height: 40px;
+    z-index: 3;;
+    object-fit: fill; 
+}
+
+.videocontrol {
+          background-image: url('Media_Panel.png');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          position: absolute; 
+          z-index: 5; 
+          text-align: center;
+          top: 20px;
+          right: 20px;
+          height: 28px;
+          width: 120px;
+          font-size: 4px;
+          letter-spacing: 18px;
+        }
+        .playpause{
+          height: 18px;
+          width: 18px;
+        }
+        .muteunmute{
+          height: 18px;
+          width: 18px;
+        }
+        .fullscreen{
+          height: 18px;
+          width: 18px;
+        }
+
+</style>
+
+</head>
+
+<body>
+
+<input src="GoBack.png" type="image" class="back" onclick="goback();"/>
+
+<img src="BrandX1.jpg" class="banner" style="top:5vh;left:33vw">
+
+<video id="video" src="videoplayback (3).mp4"  
+style="top:36vh;left:12vw" controls loop autoplay>
+</video>
+
+<nav class="videocontrol" > 
+            <br>
+            <input  class="fullscreen" type="image"  onclick="videofull()" src="Fullscreen.png" />
+            <input id="playpause" class="playpause" type="image" onclick="playPause(),toggleplaypause()" src="Stop.png" />
+            <input id="muteunmute" class="muteunmute" type="image" onclick="enableMute(),togglemuteunmute()" src="Mute.png" />
+          </nav> 
+
+<script> 
+  function toggleplaypause() {
+        var Image_Id = document.getElementById('playpause');
+        if (Image_Id.src.match("Play.png")) {
+            Image_Id.src = "Stop.png";
+        }
+        else {
+            Image_Id.src = "Play.png";
+        }
+    }        
+  function togglemuteunmute() {
+        var Image_Id = document.getElementById('muteunmute');
+        if (Image_Id.src.match("Unmute.png")) {
+            Image_Id.src = "Mute.png";
+        }
+        else {
+            Image_Id.src = "Unmute.png";
+        }
+    }      
+ 
+  var myVideo = document.getElementById("video");
+  function playPause() { 
+    if (myVideo.paused)
+      myVideo.play();
+    else 
+      myVideo.pause();
+      myVideo.currentTime = 0;
+  } 
+  function enableMute() { 
+    if (myVideo.muted === false)  
+      myVideo.muted = true;
+    else 
+      myVideo.muted = false;
+  }
+
+  function videofull()
+{
+    var elem = document.getElementById("video");
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+      }
+     
+}
+
+function goback() { 
+  location.replace("index3 copy.html")
+  }
+  </script> 
+
+<div class="menu-container">
+  <div class="button">
+     360 ENVIRONMENT SAMPLE
+     <span class="fas fa-bars"></span>
+  </div>
+  <ul>
+    <li><a href="https://x1-digital.com/">X1-DIGITAL</a></li>
+    <li><a href="index.html">MAIN LOBBY</a></li>
+    <li><a href="index2.html">ENTERTAINMENT LOUNGE</a></li>
+    <li><a href="index3.html">EXHIBIT AREA</a></li>
+    <li><a href="index8.html">SOCIALS</a></li>
+    <li><a href="index9.html">MAIN HALL</a></li>
+    <li><a href="index10.html">INFORMATION</a></li>
+    <li><a href="index11.html">ART GALLERY</a></li>
+     <li><a onclick="openFullscreen();">FULL PAGE VIEW</a></li>
+  </ul>
+</div>
+<script>
+  $(document).ready(function(){
+    $('.button').click(function(){
+      if($(this).hasClass('expand')){
+        $('ul').slideUp(function(){
+          $('.button').removeClass('expand');
+          $('.fas').removeClass('expand')
+        });
+      }else{
+        $(this).addClass('expand');
+        setTimeout(function(){
+          $('.fas').addClass('expand');
+          $('ul').stop().slideDown();
+        },200);
+      }
+    });
+  });
+</script>
+
+<script src="fullscreen.js"></script>
+
+</body>
+
+</html>

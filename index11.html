@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="utf-8">
+      <title>Art Gallery</title>
+      <link rel="stylesheet" href="w3.css">
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+      <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height:100vh;
+            width:100vw;
+            position: relative;
+            top: 0;
+            bottom: 0;
+        }
+        .map:hover {
+            opacity: 1.0;
+        }
+        .map {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            opacity: 0.5;
+            width: 120px;
+            height: 120px;
+            z-index: 5;
+        }
+        </style>
+</head>
+
+
+<body>
+
+  <div class="menu-container">
+    <div class="button">
+       360 ENVIRONMENT SAMPLE
+       <span class="fas fa-bars"></span>
+    </div>
+    <ul>
+      <li><a href="https://x1-digital.com/">X1-DIGITAL</a></li>
+      <li><a href="index.html">MAIN LOBBY</a></li>
+      <li><a href="index2.html">ENTERTAINMENT LOUNGE</a></li>
+      <li><a href="index3.html">EXHIBIT AREA</a></li>
+      <li><a href="index8.html">SOCIALS</a></li>
+      <li><a href="index9.html">MAIN HALL</a></li>
+      <li><a href="index10.html">INFORMATION</a></li>
+      <li><a href="index11.html">ART GALLERY</a></li>
+       <li><a onclick="openFullscreen();">FULL PAGE VIEW</a></li>
+    </ul>
+  </div>
+  <script>
+    $(document).ready(function(){
+      $('.button').click(function(){
+        if($(this).hasClass('expand')){
+          $('ul').slideUp(function(){
+            $('.button').removeClass('expand');
+            $('.fas').removeClass('expand')
+          });
+        }else{
+          $(this).addClass('expand');
+          setTimeout(function(){
+            $('.fas').addClass('expand');
+            $('ul').stop().slideDown();
+          },200);
+        }
+      });
+    });
+  </script>
+
+<audio id="audiobend" autoplay loop>
+  <source src="bensound-thelounge.ogg" type="audio/ogg">
+  <source src="bensound-thelounge.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+  <script>
+  
+  function setCookie(c_name,value,exdays)
+  {
+      var exdate=new Date();
+      exdate.setDate(exdate.getDate() + exdays);
+      var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+      document.cookie=c_name + "=" + c_value;
+  }
+  
+  function getCookie(c_name)
+  {
+      var i,x,y,ARRcookies=document.cookie.split(";");
+      for (i=0;i<ARRcookies.length;i++)
+      {
+        x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+        y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+        x=x.replace(/^\s+|\s+$/g,"");
+        if (x==c_name)
+          {
+          return unescape(y);
+          }
+        }
+  }
+  
+  var song = document.getElementsByTagName('audio')[0];
+  var played = false;
+  var tillPlayed = getCookie('timePlayed');
+  function update()
+  {
+      if(!played){
+          if(tillPlayed){
+          song.currentTime = tillPlayed;
+          song.play();
+          played = true;
+          }
+          else {
+                  song.play();
+                  played = true;
+          }
+      }
+  
+      else {
+      setCookie('timePlayed', song.currentTime);
+      }
+  }
+  setInterval(update);
+
+  var audio = document.getElementById("audiobend");
+  audio.volume = 0.2;
+
+  </script>
+  
+  
+  <img src="Map_Gallery.jpg" class="map">
+
+
+    <script src="three.min.js"></script>
+    <script src="OrbitControls.js"></script>
+    <script src="app6.js"></script>
+    <script src="three.js"></script>
+    <script src="fullscreen.js"></script>
+
+
+    <div class="w3-container">
+      <h2>W3.CSS Modal</h2>
+      <button id="imagebutton1" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Modal</button>
+      <div id="id01" class="w3-modal">
+        <div class="w3-modal-content">
+            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img src="19.jpg" style="width:100%; height:100% ;top: 0vh; left: 0vw" class="19 w3-padding-small">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container">
+      <h2>W3.CSS Modal</h2>
+      <button id="imagebutton2" onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-black">Open Modal</button>
+      <div id="id02" class="w3-modal">
+        <div class="w3-modal-content">
+            <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img src="12.jpg" style="width:100%; height:100% ;top: 0vh; left: 0vw" class="19 w3-padding-small">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="w3-container">
+      <h2>W3.CSS Modal</h2>
+      <button id="imagebutton3" onclick="document.getElementById('id03').style.display='block'" class="w3-button w3-black">Open Modal</button>
+      <div id="id03" class="w3-modal">
+        <div class="w3-modal-content">
+            <span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img src="17.jpg" style="width:100%; height:100% ;top: 0vh; left: 0vw" class="19 w3-padding-small">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container">
+      <h2>W3.CSS Modal</h2>
+      <button id="imagebutton4" onclick="document.getElementById('id04').style.display='block'" class="w3-button w3-black">Open Modal</button>
+      <div id="id04" class="w3-modal">
+        <div class="w3-modal-content">
+            <span onclick="document.getElementById('id04').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img src="4.jpg" style="width:100%; height:100% ;top: 0vh; left: 0vw" class="19 w3-padding-small">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container">
+      <h2>W3.CSS Modal</h2>
+      <button id="imagebutton5" onclick="document.getElementById('id05').style.display='block'" class="w3-button w3-black">Open Modal</button>
+      <div id="id05" class="w3-modal">
+        <div class="w3-modal-content">
+            <span onclick="document.getElementById('id05').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img src="3.jpg" style="width:100%; height:100% ;top: 0vh; left: 0vw" class="19 w3-padding-small">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container">
+      <h2>W3.CSS Modal</h2>
+      <button id="imagebutton6" onclick="document.getElementById('id06').style.display='block'" class="w3-button w3-black">Open Modal</button>
+      <div id="id06" class="w3-modal">
+        <div class="w3-modal-content">
+            <span onclick="document.getElementById('id06').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img src="2.jpg" style="width:100%; height:100% ;top: 0vh; left: 0vw" class="19 w3-padding-small">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container">
+      <h2>W3.CSS Modal</h2>
+      <button id="imagebutton7" onclick="document.getElementById('id07').style.display='block'" class="w3-button w3-black">Open Modal</button>
+      <div id="id07" class="w3-modal">
+        <div class="w3-modal-content">
+            <span onclick="document.getElementById('id07').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img src="16.jpg" style="width:100%; height:100% ;top: 0vh; left: 0vw" class="19 w3-padding-small">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container">
+      <h2>W3.CSS Modal</h2>
+      <button id="imagebutton8" onclick="document.getElementById('id08').style.display='block'" class="w3-button w3-black">Open Modal</button>
+      <div id="id08" class="w3-modal">
+        <div class="w3-modal-content">
+            <span onclick="document.getElementById('id08').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img src="1.jpg" style="width:100%; height:100% ;top: 0vh; left: 0vw" class="19 w3-padding-small">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container">
+      <h2>W3.CSS Modal</h2>
+      <button id="imagebutton9" onclick="document.getElementById('id09').style.display='block'" class="w3-button w3-black">Open Modal</button>
+      <div id="id09" class="w3-modal">
+        <div class="w3-modal-content">
+            <span onclick="document.getElementById('id09').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img src="4.jpg" style="width:100%; height:100% ;top: 0vh; left: 0vw" class="19 w3-padding-small">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container">
+      <h2>W3.CSS Modal</h2>
+      <button id="imagebutton10" onclick="document.getElementById('id10').style.display='block'" class="w3-button w3-black">Open Modal</button>
+      <div id="id10" class="w3-modal">
+        <div class="w3-modal-content">
+            <span onclick="document.getElementById('id10').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <img src="6.jpg" style="width:100%; height:100% ;top: 0vh; left: 0vw" class="19 w3-padding-small">
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+</html>

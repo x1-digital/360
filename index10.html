@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  
+    
+    <meta charset="utf-8">
+      <title>Information</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+      <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height:100%;
+            width:100%;
+            position: relative;
+            top: 0;
+            bottom: 0;
+        }
+        .map:hover {
+            opacity: 1.0;
+        }
+        .map {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            opacity: 0.5;
+            width: 120px;
+            height: 120px;
+            z-index: 5;
+        }
+        </style>
+</head>
+<div class="menu-container">
+  <div class="button">
+     360 ENVIRONMENT SAMPLE
+     <span class="fas fa-bars"></span>
+  </div>
+  <ul>
+    <li><a href="https://x1-digital.com/">X1-DIGITAL</a></li>
+    <li><a href="index.html">MAIN LOBBY</a></li>
+    <li><a href="index2.html">ENTERTAINMENT LOUNGE</a></li>
+    <li><a href="index3.html">EXHIBIT AREA</a></li>
+    <li><a href="index8.html">SOCIALS</a></li>
+    <li><a href="index9.html">MAIN HALL</a></li>
+    <li><a href="index10.html">INFORMATION</a></li>
+    <li><a href="index11.html">ART GALLERY</a></li>
+     <li><a onclick="openFullscreen();">FULL PAGE VIEW</a></li>
+  </ul>
+</div>
+<script>
+  $(document).ready(function(){
+    $('.button').click(function(){
+      if($(this).hasClass('expand')){
+        $('ul').slideUp(function(){
+          $('.button').removeClass('expand');
+          $('.fas').removeClass('expand')
+        });
+      }else{
+        $(this).addClass('expand');
+        setTimeout(function(){
+          $('.fas').addClass('expand');
+          $('ul').stop().slideDown();
+        },200);
+      }
+    });
+  });
+</script>
+
+
+<img src="Map_information.jpg" class="map">
+
+<body>
+    <script src="three.min.js"></script>
+    <script src="OrbitControls.js"></script>
+    <script src="app5.js"></script>
+    <script src="three.js"></script>
+    <script src="fullscreen.js"></script>
+
+    
+
+</body>
+
+</html>
